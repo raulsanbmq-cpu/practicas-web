@@ -5,14 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio HTML</title>
+    <link rel="stylesheet" href="portafolio.css">
 </head>
 
 <body>
-    <header>
-        <img src="Perfil.png" alt="Mi imagen" width="50">
-        <h1>RAÚL SANCHEZ-BEATO</h1>
-        <p>Formandose en <strong>programación</strong> | Aprendinedo HTML, CSS y más sobre Desarrollo Web </p>
-    </header>
+    <div id="contenedor">
+        <header>
+            <img src="Perfil.png" alt="Mi imagen" width="50">
+            <h1>RAÚL SANCHEZ-BEATO</h1>
+            <p>Formandose en <strong>programación</strong> | Aprendinedo HTML, CSS y más sobre Desarrollo Web </p>
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="index.html">Mi info</a>
+                </li>
+                <li>
+                    <a href="index.html">Formulario</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
 
     <hr>
 
@@ -25,7 +43,12 @@
     <section>
         <h2>Habilidades Laborales</h2>
         <ul>
-            <li>Programación Orientada a Objetos (Java)</li>
+            <li>Programación:</li>
+            <ul>
+                <li>Java</li>
+                <li>HTML / CSS</li>
+                <li>Base de Datos (MSQL)</li>
+            </ul>
             <li>Uso de lenguaje de marcas</li>
             <li>Uso de entornos como Git y Github</li>
             <li>Buena organización y capacidad para resolver problemas</li>
@@ -40,6 +63,51 @@
             <li><a href="https://github.com/raulsanbmq-cpu" target="_blank">Git Hub: raulsanbmq-cpu</a></li>
         </ul>
     </section>
+
+
+    <section>
+        <h2>Formulario:</h2>
+        <form action="" method="post">
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <br> <br>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <br> <br>
+
+            <label for="gmail">Gmail:</label>
+            <input type="email" id="gmail" name="gmail" required>
+
+            <br> <br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" maxlength="15" minlength="5" required>
+
+            <br> <br>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea name="mensaje" id="mensaje" maxlength="100"></textarea>
+
+            <br> <br>
+
+
+            <button type="submit">ENVIAR</button>
+
+        </form>
+
+</section>
+
+        <br>
+
+
+        <footer>--Copyright 2026--</footer>
+
+
+
 
 
 </body>
