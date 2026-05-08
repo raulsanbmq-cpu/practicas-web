@@ -45,26 +45,51 @@ nav ul li {
 
 hr {
     clear: both;
+    margin: 1rem;
 }
 
-section{
+section {
     width: 80%;
     height: 90%;
-    margin: 1rem;
+    margin: 1rem auto;
     border-radius: 1rem;
     border: 0.1rem rgb(0, 37, 68) solid;
     padding: 1rem;
-background-color: white;  
+    background-color: white;
 }
 
-section ul{
+section ul {
     padding: 0.2rem;
     margin-left: 0.5rem;
 }
 
-footer{
-     text-align: left;
+section a {
+    color: black;
+    text-decoration: none;
+}
+
+section a:hover {
+    color: rgb(0, 102, 255);
+}
+
+
+footer {
+    text-align: left;
     width: 100%;
     margin-left: 0;
     padding-left: 0;
+}
+
+
+
+[type] {
+    background-color: rgb(78, 236, 228);
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: rgb(179, 37, 179);
 }
