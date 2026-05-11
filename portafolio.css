@@ -11,10 +11,24 @@ body {
 
 #contenedor {
     width: 90%;
-    margin: auto;
+    margin-top: 0.5rem;
+    margin-left: 5%;
     border: 0.1rem solid;
     background-color: rgb(204, 142, 255);
     border-radius: 1rem;
+}
+
+button {
+  width: 10rem;
+  height: 3.5rem; 
+  font-size: 1.5rem;
+}
+
+.boton {
+     width: 90%;
+    margin-top: 0.6rem;
+
+    text-align: right;
 }
 
 header {
@@ -27,7 +41,15 @@ header h1 {
     color: white;
 }
 
+h2{
+    height: 2rem;
+}
+
 nav {
+    
+    width: 90%;
+    border-radius: 1rem;
+    margin: auto;
     height: 2rem;
     width: auto;
     border-bottom-left-radius: 1rem;
@@ -42,8 +64,8 @@ nav a{
 
 nav ul{
     display: flex;
-    justify-content: center;
-    float: left;
+    justify-content: space-around;
+    float: center;
 }
 
 nav ul li {
@@ -118,4 +140,37 @@ a:link {
 
 a:visited {
     color: rgb(179, 37, 179);
+}
+
+/* Responsive */
+@media (max-width: 768px){
+.proyecto{
+    flex-direction: column;
+}
+
+nav{
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 1rem;
+}
+
+nav ul{
+    display: grid;
+ grid-template-columns: 1fr 1fr;
+    
+}
+
+
+
+}
+
+/*Codigo para modo osucro*/
+
+body.active{
+    background-color: rgb(4, 44, 44);
+}
+
+body.active section{
+    background-color: rgb(33, 0, 54);
+    color: rgb(208, 214, 208);
 }
