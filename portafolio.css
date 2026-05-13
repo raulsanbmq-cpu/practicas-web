@@ -19,9 +19,9 @@ body {
 }
 
 button {
-  width: 10rem;
-  height: 3.5rem; 
-  font-size: 1.5rem;
+  width: 6rem;
+  height: 2.5rem; 
+  font-size: 1rem;
 }
 
 .boton {
@@ -164,7 +164,7 @@ nav ul{
 
 }
 
-/*Codigo para modo osucro*/
+/*Codigo para modo oscuro*/
 
 body.active{
     background-color: rgb(4, 44, 44);
@@ -173,4 +173,15 @@ body.active{
 body.active section{
     background-color: rgb(33, 0, 54);
     color: rgb(208, 214, 208);
+}
+
+body.active [type] {
+    background-color: rgb(0, 127, 150);
+    color: white
+}
+
+/*Parte para agregar estudios*/
+.completada {
+    text-decoration: line-through;
+    color: gray;
 }

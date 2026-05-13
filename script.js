@@ -1,12 +1,11 @@
+// boton modo oscuro
 var toggle = document.getElementById('modo');
 var body = document.querySelector('body');
 
-/* Al cargar la página, comprueba si estaba guardado el modo oscuro */
 if (localStorage.getItem('tema') === 'oscuro') {
     body.classList.add('active');
 }
 
-/* Al hacer clic, cambia el tema y lo guarda */
 toggle.onclick = function() {
     body.classList.toggle('active');
 
@@ -16,3 +15,19 @@ toggle.onclick = function() {
         localStorage.setItem('tema', 'claro');
     }
 }
+
+// Insertar contenido desde javascript
+const estudios = [
+    {
+        titulo: "HTML",
+        descripcion: "Meter la estructura básica de una página web."
+    },
+    {
+        titulo: "CSS",
+        descripcion: "Aplicando estilos al portafolio."
+    },
+    {
+        titulo: "JavaScript",
+        descripcion: "Añadiendo elementos mediante código."
+    }
+];
