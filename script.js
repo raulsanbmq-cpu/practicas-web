@@ -6,7 +6,7 @@ if (localStorage.getItem('tema') === 'oscuro') {
     body.classList.add('active');
 }
 
-toggle.onclick = function() {
+toggle.onclick = function () {
     body.classList.toggle('active');
 
     if (body.classList.contains('active')) {
@@ -17,7 +17,6 @@ toggle.onclick = function() {
 }
 
 // Insertar contenido desde javascript
-// Obtener elementos del HTML
 const inputEstudio = document.getElementById("inputEstudio");
 const btnAgregar = document.getElementById("btnAgregar");
 const listaEstudios = document.getElementById("listaEstudios");
@@ -27,92 +26,91 @@ btnAgregar.addEventListener("click", agregarEstudio);
 function agregarEstudio() {
 
 
-    const texto = inputEstudio.value.trim();
+ const texto = inputEstudio.value.trim();
 
 
-    if (texto === "") {
-        alert("Escribe un estudio");
-        return;
+ if (texto === "") {
+     alert("Escribe un estudio");
+     return;
     }
 
-    const li = document.createElement("li");
+ const li = document.createElement("li");
 
-    const span = document.createElement("span");
-    span.textContent = texto;
-    span.classList.add("estudio");
+ const span = document.createElement("span");
+ span.textContent = texto;
+ span.classList.add("estudio");
 
-    span.addEventListener("click", () => {
+ span.addEventListener("click", () => {
     span.classList.toggle("completada");
-});
+ });
 
-    const botonEliminar = document.createElement("button");
-    botonEliminar.textContent = "Eliminar";
+ const botonEliminar = document.createElement("button");
+ botonEliminar.textContent = "Eliminar";
 
-    botonEliminar.addEventListener("click", function () {
-        li.remove();
-    });
+  botonEliminar.addEventListener("click", function () {
+     li.remove();
+  });
 
-    li.appendChild(span);
-    li.appendChild(botonEliminar);
+  li.appendChild(span);
+  li.appendChild(botonEliminar);
 
-    listaEstudios.appendChild(li);
+  listaEstudios.appendChild(li);
 
-    inputEstudio.value = "";
+ inputEstudio.value = "";
 }
 
 //Buscador de perfil de Github
-// API de GitHub
+async function buscarUsuario() {
 
-const inputGitHub = document.getElementById("usuarioGitHub");
-const btnGitHub = document.getElementById("btnGitHub");
-const resultadoGitHub = document.getElementById("resultadoGitHub");
-const listaRepos = document.getElementById("listaRepos");
+ const username = document.getElementById("username").value.trim();
+ const card = document.getElementById("card");
+ const error = document.getElementById("error");
+ const listaRepos = document.getElementById("listaRepos");
 
-btnGitHub.addEventListener("click", buscarGitHub);
+  card.style.display = "none";
+  error.style.display = "none";
+  listaRepos.innerHTML = "";
 
-async function buscarGitHub() {
-    const usuario = inputGitHub.value.trim();
-
-    if (usuario === "") {
-        alert("Escribe un usuario de GitHub");
-        return;
+    if (username === "") {
+      error.textContent = "Debes escribir un usuario";
+      error.style.display = "block";
+      return;
     }
 
-    resultadoGitHub.innerHTML = "";
-    listaRepos.innerHTML = "";
-
     try {
-        const respuestaUsuario = await fetch("https://api.github.com/users/" + usuario);
+     const response = await fetch("https://api.github.com/users/" + username);
 
-        if (!respuestaUsuario.ok) {
+     if (!response.ok) {
             throw new Error("Usuario no encontrado");
         }
 
-        const datosUsuario = await respuestaUsuario.json();
+     const data = await response.json();
 
-        resultadoGitHub.innerHTML = `
-            <img src="${datosUsuario.avatar_url}" alt="Avatar de GitHub" width="100">
-            <h3>${datosUsuario.login}</h3>
-            <p>${datosUsuario.bio || "Sin biografía"}</p>
-            <p>Repositorios públicos: ${datosUsuario.public_repos}</p>
-        `;
+     document.getElementById("avatar").src = data.avatar_url;
+     document.getElementById("name").textContent = data.name || data.login;
+     document.getElementById("bio").textContent = data.bio || "Sin bio disponible";
+     document.getElementById("repos").textContent = data.public_repos;
 
-        const respuestaRepos = await fetch("https://api.github.com/users/" + usuario + "/repos");
-        const repositorios = await respuestaRepos.json();
+        // Parte para buscar repositorios
+      const responseRepos = await fetch("https://api.github.com/users/" + username + "/repos");
+      const repos = await responseRepos.json();
 
-        for (let repo of repositorios) {
-            const li = document.createElement("li");
+      repos.forEach(repo => {
+         const li = document.createElement("li");
 
-            const enlace = document.createElement("a");
-            enlace.href = repo.html_url;
-            enlace.textContent = repo.name;
-            enlace.target = "_blank";
+         const enlace = document.createElement("a");
+         enlace.href = repo.html_url;
+         enlace.textContent = repo.name;
+         enlace.target = "_blank";
 
-            li.appendChild(enlace);
-            listaRepos.appendChild(li);
-        }
+         li.appendChild(enlace);
+         listaRepos.appendChild(li);
+        });
 
-    } catch (error) {
-        resultadoGitHub.innerHTML = `<p>${error.message}</p>`;
+     card.style.display = "block";
+
+    } catch (err) {
+     error.textContent = "Error: " + err.message;
+     error.style.display = "block";
     }
 }
